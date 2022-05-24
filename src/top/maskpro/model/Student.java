@@ -4,7 +4,7 @@ package top.maskpro.model;
 /**
  * 
  * @author Mask
- * @version 1.0
+ * @version 3.0-Finally
  *
  */
 public class Student {
@@ -13,6 +13,7 @@ public class Student {
 	private String number;
 	private byte age;
 	private char sex;
+	private Subject mySubject;
 	
 	public Student() {
 		super();
@@ -20,10 +21,10 @@ public class Student {
 	public Student(String studentName, String studentNumber, byte studentAge, char studentSex) {
 		super();
 		//TODO
-		setName(studentName);
-		setNumber(studentNumber);
-		setAge(studentAge);
-		setSex(studentSex);
+		this.setName(studentName);
+		this.setNumber(studentNumber);
+		this.setAge(studentAge);
+		this.setSex(studentSex);
 	}
 	public String getName() {
 		return name;
@@ -52,10 +53,33 @@ public class Student {
 		this.sex = sex;
 	}
 	
+	public Subject getMySubject() {
+		return mySubject;
+	}
+	public void setMySubject(Subject subject) {
+		this.mySubject = subject;
+	}
 	public String info() {
 		String str = "学生信息如下\n"+"名字：" + getName()
 			+ "\n学号："+ getNumber() + "\n年龄：" + getAge()
-				+ "\n性别：" + getSex();
+				+ "\n性别：" + getSex() + "\n专业名称：" + mySubject.getName()
+				+ "\n专业代码：" + mySubject.getNumber();
+		return str;
+	}
+	
+	public String info(String subjectName,String subjectNumber) {
+		String str = "学生信息如下\n"+"名字：" + getName()
+			+ "\n学号："+ getNumber() + "\n年龄：" + getAge()
+				+ "\n性别：" + getSex() + "\n专业名称：" + subjectName
+					+ "\n专业代码：" + subjectNumber;
+		return str;
+	}
+	
+	public String info(Subject cs) {
+		String str = "学生信息如下\n"+"名字：" + getName()
+			+ "\n学号："+ getNumber() + "\n年龄：" + getAge()
+				+ "\n性别：" + getSex() + "\n专业名称：" + cs.getName()
+					+ "\n专业代码：" + cs.getNumber();
 		return str;
 	}
 }

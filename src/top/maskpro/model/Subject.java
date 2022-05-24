@@ -3,7 +3,7 @@ package top.maskpro.model;
 /**
  * 
  * @author Mask
- * @version 1.0
+ * @version 3.0-Finally
  *
  */
 public class Subject {
@@ -11,6 +11,8 @@ public class Subject {
 	private String name;
 	private String number;
 	private byte life;
+	private Student myStudents[];
+	private byte studentsNumber;
 
 	public Subject() {
 		super();
@@ -19,9 +21,9 @@ public class Subject {
 	public Subject(String subjectName, String subjectNumber, byte subjectLife) {
 		super();
 		// TODO
-		setName(subjectName);
-		setNumber(subjectNumber);
-		setLife(subjectLife);
+		this.setName(subjectName);
+		this.setNumber(subjectNumber);
+		this.setLife(subjectLife);
 	}
 
 	public String getName() {
@@ -49,6 +51,31 @@ public class Subject {
 			return;
 		}
 		this.life = subjectLife;
+	}
+	
+	public void setMyStudents(byte number) {
+		myStudents = new Student[number];
+	}
+	
+	public Student[] getMyStudents() {
+		if(myStudents == null) {
+			setMyStudents((byte) 100);
+		}
+		return myStudents;
+	}
+	
+	public String getStudentNumber() {
+		return "cs专业有" + studentsNumber + "名学生";
+	}
+	
+	public void addStudents(Student... stu) {
+		
+		for(Student s:stu) {
+			s.setMySubject(this);
+			this.getMyStudents()[studentsNumber] = s;
+			studentsNumber++;
+		}
+		
 	}
 
 	public String info() {
